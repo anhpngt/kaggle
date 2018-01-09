@@ -1,15 +1,16 @@
 # MNIST
-mnist/logs
-mnist/models
+mnist/logs/
+mnist/models/
 mnist/train.csv
 mnist/test.csv
 
 # Plant Seedlings
-plantseedlings/data
-plantseedlings/logs
-plantseedlings/models
+plantseedlings/data/
+plantseedlings/logs/
+plantseedlings/models/
 plantseedlings/train.zip
 plantseedlings/test.zip
 
 # Dog vs Cat
-dogvscat/
+dogvscat/train.zip
+dogvscat/test.zip
