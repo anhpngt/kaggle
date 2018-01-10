@@ -1,7 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import seaborn as sns
 import pandas as pd
 
 np.random.seed(2)
@@ -25,39 +22,46 @@ if __name__ == '__main__':
   # CNN model
 
   # Resume training model
-  resuming_epoch = 51
-  model = load_model('models/jan9-051-0.42.h5')
+  resuming_epoch = 13
+  model = load_model('models/jan9-013-0.38.h5')
 
   # Create new model
   # resuming_epoch = 0
   # model = Sequential()
-  # model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='Same', activation='relu', input_shape=(128, 128, 3)))
-  # model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='Same', activation='relu'))
+  # model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='same', activation='relu', input_shape=(128, 128, 3)))
+  # model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='same', activation='relu'))
+  # model.add(MaxPool2D(pool_size=(2, 2)))
+  # model.add(BatchNormalization())
+  # # model.add(Dropout(0.25))
+
+  # model.add(Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu'))
+  # model.add(Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu'))
   # model.add(MaxPool2D(pool_size=(2, 2)))
   # model.add(BatchNormalization())
   # model.add(Dropout(0.25))
 
-  # model.add(Conv2D(filters=64, kernel_size=(3, 3), padding='Same', activation='relu'))
-  # model.add(Conv2D(filters=64, kernel_size=(3, 3), padding='Same', activation='relu'))
+  # model.add(Conv2D(filters=128, kernel_size=(3, 3), padding='same', activation='relu'))
+  # model.add(Conv2D(filters=128, kernel_size=(3, 3), padding='same', activation='relu'))
   # model.add(MaxPool2D(pool_size=(2, 2)))
   # model.add(BatchNormalization())
-  # model.add(Dropout(0.25))
+  # # model.add(Dropout(0.25))
 
-  # model.add(Conv2D(filters=128, kernel_size=(3, 3), padding='Same', activation='relu'))
-  # model.add(Conv2D(filters=128, kernel_size=(3, 3), padding='Same', activation='relu'))
+  # model.add(Conv2D(filters=256, kernel_size=(3, 3), padding='same', activation='relu'))
+  # model.add(Conv2D(filters=256, kernel_size=(3, 3), padding='same', activation='relu'))
   # model.add(MaxPool2D(pool_size=(2, 2)))
   # model.add(BatchNormalization())
   # model.add(Dropout(0.25))
 
   # model.add(Flatten())
   # model.add(Dense(256, activation='relu'))
-  # model.add(BatchNormalization())
+  # model.add(Dropout(0.25))
+  # model.add(Dense(256, activation='relu'))
   # model.add(Dropout(0.25))
   # model.add(Dense(2, activation='softmax'))
 
   # Optimizer
   # optimizer = RMSprop(lr=0.001, rho=0.9, epsilon=1e-8, decay=0.0)
-  optimizer = Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
+  optimizer = Adam(lr=1e-3, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
   # Compile the model
   model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
@@ -112,4 +116,4 @@ if __name__ == '__main__':
                                            tensorboard_visualization],
                                 initial_epoch=resuming_epoch)
 
-  model.save('models/initial_jan9.h5')
+  model.save('models/jan10.h5')

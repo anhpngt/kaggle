@@ -10,18 +10,19 @@ from keras.preprocessing.image import ImageDataGenerator
 
 if __name__ == '__main__':
   # Load model
-  model = load_model('models/jan9-089-0.30.h5')
+  model = load_model('models/jan9-033-0.17.h5')
 
   # Load test data
   test_dir = 'data/test'
   test_files = [f for f in listdir(test_dir) if isfile(join(test_dir, f))]
   file_number = len(test_files)
+  del test_files
 
   # Get the images by batch and predict
   x = []
   results = np.zeros(file_number)
   for i in range(file_number):
-    x.append(cv2.resize(cv2.imread(join(test_dir, test_files[i])), (128, 128)))
+    x.append(cv2.resize(cv2.imread(join(test_dir, str(i+1) + '.jpg')), (128, 128)))
     if len(x) == 1777 or i == file_number - 1:
       print('Calculating score at i = {}'.format(i))
       x = np.array([cv2.cvtColor(img, cv2.COLOR_BGR2RGB) for img in x], dtype=np.float32)
