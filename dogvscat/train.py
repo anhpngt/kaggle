@@ -22,8 +22,8 @@ if __name__ == '__main__':
   # CNN model
 
   # Resume training model
-  resuming_epoch = 13
-  model = load_model('models/jan9-013-0.38.h5')
+  resuming_epoch = 33
+  model = load_model('models/jan9-033-0.17.h5')
 
   # Create new model
   # resuming_epoch = 0
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
   # Optimizer
   # optimizer = RMSprop(lr=0.001, rho=0.9, epsilon=1e-8, decay=0.0)
-  optimizer = Adam(lr=1e-3, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
+  optimizer = Adam(lr=5e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
   # Compile the model
   model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
