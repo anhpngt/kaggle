@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
   # Resume training model
   resuming_epoch = 33
-  model = load_model('models/jan9-033-0.17.h5')
+  model = load_model('models/jan9-039-0.18.h5')
 
   # Create new model
   # resuming_epoch = 0
@@ -71,7 +71,7 @@ if __name__ == '__main__':
                                               factor=0.5, min_lr=1e-5)
 
   # Additional utility callbacks
-  model_check_point = ModelCheckpoint('models/jan9-{epoch:03d}-{val_loss:.2f}.h5',
+  model_check_point = ModelCheckpoint('models/jan12-{epoch:03d}-{val_loss:.2f}.h5',
                                       save_best_only=True, period=1)
   tensorboard_visualization = TensorBoard(log_dir='logs/')
 
@@ -116,4 +116,4 @@ if __name__ == '__main__':
                                            tensorboard_visualization],
                                 initial_epoch=resuming_epoch)
 
-  model.save('models/jan10.h5')
+  model.save('models/jan12.h5')

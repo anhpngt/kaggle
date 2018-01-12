@@ -10,7 +10,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 if __name__ == '__main__':
   # Load model
-  model = load_model('models/jan9-039-0.18.h5')
+  model = load_model('models/jan12-104-0.12.h5')
 
   # Load test data
   test_dir = 'data/test'
