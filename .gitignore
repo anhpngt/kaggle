@@ -1,3 +1,6 @@
+# Iceberg Classifier
+icebergclassifier/
+
 # MNIST
 mnist/train.csv
 mnist/test.csv
