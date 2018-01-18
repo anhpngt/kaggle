@@ -1,3 +1,6 @@
+# Dog Breed Identification
+dogbreedidentification/data/
+
 # Iceberg Classifier
 icebergclassifier/
 
@@ -8,15 +11,11 @@ mnist/logs/
 mnist/models/
 
 # Plant Seedlings
-plantseedlings/train.zip
-plantseedlings/test.zip
 plantseedlings/data/
 plantseedlings/logs/
 plantseedlings/models/
 
 # Dog vs Cat
-dogvscat/train.zip
-dogvscat/test.zip
 dogvscat/data/
 dogvscat/logs/
 dogvscat/models/
