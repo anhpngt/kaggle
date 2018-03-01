@@ -4,6 +4,9 @@ dogbreedidentification/data/
 # Iceberg Classifier
 icebergclassifier/
 
+# Titanic
+titanickaggle/saved_model
+
 # MNIST
 mnist/train.csv
 mnist/test.csv
