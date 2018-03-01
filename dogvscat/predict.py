@@ -1,38 +1,42 @@
+import sys
 from os import listdir
-from os.path import isfile, join
+from os.path import join
 
-import pandas as pd
-import numpy as np
 import cv2
+import tensorflow as tf
 
-from keras.models import load_model
-from keras.preprocessing.image import ImageDataGenerator
-
-if __name__ == '__main__':
-  # Load model
-  model = load_model('models/jan12-104-0.12.h5')
-
-  # Load test data
-  test_dir = 'data/test'
-  test_files = [f for f in listdir(test_dir) if isfile(join(test_dir, f))]
-  file_number = len(test_files)
-  del test_files
-
-  # Get the images by batch and predict
-  x = []
-  results = np.zeros(file_number)
-  for i in range(file_number):
-    x.append(cv2.resize(cv2.imread(join(test_dir, str(i+1) + '.jpg')), (128, 128)))
-    if len(x) == 1777 or i == file_number - 1:
-      print('Calculating score at i = {}'.format(i))
-      x = np.array([cv2.cvtColor(img, cv2.COLOR_BGR2RGB) for img in x], dtype=np.float32)
-      x = x / 255.
-      scores = model.predict(x)
-      scores_sum_rowwise = np.sum(scores, axis=1)
-      scores[:, 0] /= scores_sum_rowwise
-      scores[:, 1] /= scores_sum_rowwise
-      results[i-x.shape[0]+1:i+1] = scores[:,1]
-      x = []
-
-  submission = pd.concat([pd.Series(range(1,12501), name='id'), pd.Series(results, name='label')], axis=1)
-  submission.to_csv("submission.csv", index=False)
+if __name__=='__main__':
+    # Load model
+    session = tf.InteractiveSession()
+    saver = tf.train.import_meta_graph('model/model-9999.meta')
+    checkpoint = tf.train.get_checkpoint_state('model')
+    if checkpoint and checkpoint.model_checkpoint_path:
+        saver.restore(session, checkpoint.model_checkpoint_path)
+        print("Successfully loaded:", checkpoint.model_checkpoint_path)
+    else:
+        print("Could not load model.")
+        sys.exit(-1)
+    
+    # Start working with loaded model
+    graph = tf.get_default_graph()
+    x = graph.get_tensor_by_name('x:0')
+    y_pred = graph.get_tensor_by_name('y_pred:0')
+    y_pred_cls = tf.arg_max(y_pred, dimension=1)
+    
+    test_dir = 'test1'
+    image_files = listdir(test_dir) 
+    for file in image_files:
+        print('Image:', file)
+        img = cv2.imread(join(test_dir, file))
+        img_resized = cv2.resize(img, (224, 224))
+        cv2.imshow('image', img)
+        a, b = session.run([y_pred, y_pred_cls], feed_dict={x: [img_resized]})
+        print('Possibility:', a)
+        print('Prediction: ', b)
+        
+        # Break
+        key = cv2.waitKey(-1) & 0xFF
+        if key == ord('q'):
+            break
+        elif key == ord('p'):
+            cv2.waitKey(0)    

@@ -15,7 +15,16 @@ plantseedlings/data/
 plantseedlings/logs/
 plantseedlings/models/
 
-# Dog vs Cat
-dogvscat/data/
-dogvscat/logs/
-dogvscat/models/
+# Dog vs Cat Redux
+dogvscatredux/data/
+dogvscatredux/logs/
+dogvscatredux/models/
+
+# Dog vs Cat Original
+dogvscat/__pycache__/
+dogvscat/test1/
+dogvscat/train/
+dogvscat/train_reduced/
+dogvscat/model/
+dogvscat/test1.zip
+dogvscat/train.zip
