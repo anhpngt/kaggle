@@ -2,7 +2,11 @@
 dogbreedidentification/data/
 
 # Iceberg Classifier
-icebergclassifier/
+icebergclassifier/download/
+icebergclassifier/logs/
+icebergclassifier/models/
+icebergclassifier/train.json
+icebergclassifier/test.json
 
 # Titanic
 titanickaggle/saved_model
