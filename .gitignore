@@ -1,10 +1,12 @@
+.vscode
+
 # Dog Breed Identification
 dogbreedidentification/data/
 
 # Iceberg Classifier
 icebergclassifier/download/
 icebergclassifier/logs/
-icebergclassifier/models/
+icebergclassifier/data/
 icebergclassifier/train.json
 icebergclassifier/test.json
 
@@ -32,6 +34,8 @@ dogvscat/__pycache__/
 dogvscat/test1/
 dogvscat/train/
 dogvscat/train_reduced/
-dogvscat/model/
+dogvscat/models/
+dogvscat/data/
+dogvscat/logs/
 dogvscat/test1.zip
 dogvscat/train.zip
